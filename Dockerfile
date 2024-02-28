@@ -48,7 +48,7 @@ ARG NPROC
 # RUN git clone --recursive --branch ${MONERO_BRANCH} https://github.com/monero-project/monero.git
 RUN git clone --recursive https://github.com/monero-project/monero.git \
     && cd monero \
-    && test -z "$NPROC" && nproc > /nproc || echo -n "$NPROC" > /nproc && make -j"$(cat /nproc)"
+    && test -z "$NPROC" && nproc > /nproc || echo -n "$NPROC" > /nproc && USE_DEVICE_TREZOR=OFF make -j"$(cat /nproc)"
 
 
 # Copy and cmake/make xmrblocks with all available threads
